@@ -1,16 +1,15 @@
 import jwt from "jsonwebtoken";
-import { IAuthResponseDTO } from "../../../application/dtos/AuthResponseDto";
 import dotenv from "dotenv";
 dotenv.config();
 
 class GenerateToken {
-  async execute(id: string): Promise<IAuthResponseDTO> {
+  async execute(id: string): Promise<string> {
     const token = jwt.sign({}, `${process.env.SECRETJWT}`, {
       subject: id,
-      expiresIn: 300,
+      expiresIn: "1m",
     });
 
-    return { token };
+    return token;
   }
 }
 

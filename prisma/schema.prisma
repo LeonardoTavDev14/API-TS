@@ -16,6 +16,16 @@ model User {
   resetExpiredToken DateTime?
   created_At DateTime @default(now())
   updated_At DateTime @default(now())
+  refresh_token RefreshToken[] @relation("User_tokens")
 
   @@map("users")
+}
+
+model RefreshToken {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  expiredIn DateTime  
+  user User @relation("User_tokens", fields: [userId], references: [id])
+  userId String @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
