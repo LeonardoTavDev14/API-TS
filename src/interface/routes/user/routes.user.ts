@@ -19,6 +19,7 @@ import { ChangePasswordUserSchema } from "../../validations/schemas/user/ChangeP
 import { ResetPasswordUserController } from "../../controllers/user/ResetPasswordUserController";
 import { ResetPasswordUserSchema } from "../../validations/schemas/user/ResetPasswordUserSchema";
 import { RefreshTokenController } from "../../controllers/refresh_token/RefreshTokenController";
+import { LogoutUserController } from "../../controllers/user/LogoutUserController";
 
 const routes = Router();
 
@@ -31,6 +32,7 @@ const updateUserController = new UpdateUserController();
 const changePasswordUserController = new ChangePasswordUserController();
 const resetPasswordUserControlelr = new ResetPasswordUserController();
 const refreshTokenController = new RefreshTokenController();
+const logoutUserController = new LogoutUserController();
 
 routes.post(
   "/created",
@@ -77,5 +79,6 @@ routes.post(
   ensureAuthenticated,
   refreshTokenController.handle
 );
+routes.post("/logout", ensureAuthenticated, logoutUserController.handle);
 
 export { routes as userRoutes };
