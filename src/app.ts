@@ -1,6 +1,6 @@
 import express from "express";
 import { userRoutes } from "./interface/routes/user/routes.user";
-import { limiter } from "./shared/config/rateLimite";
+import { limiter } from "./shared/config/rateLimit";
 
 const app = express();
 

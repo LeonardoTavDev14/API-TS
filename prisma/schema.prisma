@@ -24,7 +24,7 @@ model User {
 model RefreshToken {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   expiredIn DateTime  
-  user User @relation("User_tokens", fields: [userId], references: [id])
+  user User @relation("User_tokens", fields: [userId], references: [id], onDelete: Cascade) //OnDelete: Cascade para deletar os refresh_tokens associados com usuário deletado!
   userId String @db.ObjectId
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
