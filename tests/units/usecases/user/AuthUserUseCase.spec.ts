@@ -4,7 +4,6 @@ import { FindEmailRepository } from "../../../../src/infrastruture/repository/Fi
 import { CompareProviderRepository } from "../../../../src/shared/providers/bcrypt/repository/compareProviderRepository";
 import { DeleteManyRepository } from "../../../../src/infrastruture/repository/DeleteManyRepository";
 import { CreateRefreshTokenRepository } from "../../../../src/infrastruture/repository/CreateRefreshTokenRepository";
-import { RefreshToken } from "../../../../src/domain/entities/refresh_token/RefreshToken";
 
 let useCase: AuthUserUseCase;
 
@@ -25,8 +24,8 @@ beforeAll(() => {
 describe("Use cases - Auth User", () => {
   test("Must return two tokens", async () => {
     const result = await useCase.execute({
-      email: "leonardoarrais211@gmail.com",
-      password: "novaSenha123",
+      email: "matheus@gmail.com",
+      password: "123123123",
     });
 
     expect(typeof result.token).toBe("string");
